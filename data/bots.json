@@ -1,0 +1,23 @@
+[
+  {
+    "id": "04140c19-0c46-43c6-8e78-f459cd3b3370",
+    "name": "Bot One",
+    "description": "First Bot",
+    "status": "DISABLED",
+    "created": 1713809849892
+  },
+  {
+    "id": "22526dec-4e04-4815-a641-ee6c71cbc5a9",
+    "name": "Bot Two",
+    "description": "Second Bot",
+    "status": "ENABLED",
+    "created": 1713774119964
+  },
+  {
+    "id": "44700aa2-cba6-43d2-9ad4-8d8a499bd356",
+    "name": "Bot Three",
+    "description": "Third Bot",
+    "status": "PAUSED",
+    "created": 1713762074682
+  }
+]

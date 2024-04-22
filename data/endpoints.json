@@ -1,0 +1,86 @@
+[
+  {
+    "id": "6f4fdfd9-da33-4711-9386-579e8101dc43",
+    "name": "Endpoint One",
+    "description": "First Endpoint",
+    "bot": "Bot One",
+    "created": 1713773401591
+  },
+  {
+    "id": "98f2b3cd-53dc-42b3-b327-935113e2b105",
+    "name": "Endpoint Two",
+    "description": "Second Endpoint",
+    "bot": "Bot One",
+    "created": 1713762135068
+  },
+  {
+    "id": "9844fd23-415b-4d2f-9fa1-78571036cd96",
+    "name": "Endpoint Three",
+    "description": "Third Endpoint",
+    "bot": "Bot One",
+    "created": 1713746559494
+  },
+  {
+    "id": "318c5907-40b4-4353-9f2d-93c1355a1b83",
+    "name": "Endpoint Four",
+    "description": "Fourth Endpoint",
+    "bot": "Bot One",
+    "created": 1713784830600
+  },
+  {
+    "id": "bf991cbe-e671-4ae6-9538-353d754f0eff",
+    "name": "Endpoint Five",
+    "description": "Fifth Endpoint",
+    "bot": "Bot One",
+    "created": 1713788507693
+  },
+  {
+    "id": "f1c02ccd-270a-4db1-85d9-97dbdea535fa",
+    "name": "Endpoint Six",
+    "description": "Sixth Endpoint",
+    "bot": "Bot One",
+    "created": 1713809034439
+  },
+  {
+    "id": "0fb5c514-eeaf-4cc2-b23a-20cdc04cbe17",
+    "name": "Endpoint Seven",
+    "description": "Seventh Endpoint",
+    "bot": "Bot Two",
+    "created": 1713790313189
+  },
+  {
+    "id": "bc5cc0b1-26ea-49a0-b49b-20757a93a227",
+    "name": "Endpoint Eight",
+    "description": "Eight Endpoint",
+    "bot": "Bot Two",
+    "created": 1713796987661
+  },
+  {
+    "id": "374bef68-e278-4b1e-810b-83eccbdf3eaf",
+    "name": "Endpoint Nine",
+    "description": "Nineth Endpoint",
+    "bot": "Bot Two",
+    "created": 1713764723522
+  },
+  {
+    "id": "e5d7874c-fd2d-41b8-abc1-2e311964ae8c",
+    "name": "Endpoint Ten",
+    "description": "Tenth Endpoint",
+    "bot": "Bot Two",
+    "created": 1713744352499
+  },
+  {
+    "id": "dea6c463-95e9-4c11-9207-89cfc6c101e8",
+    "name": "Endpoint Eleven",
+    "description": "Eleventh Endpoint",
+    "bot": "Bot Two",
+    "created": 1713779066315
+  },
+  {
+    "id": "c41a527e-0b14-4f56-bc0d-b1c77833d50a",
+    "name": "Endpoint Twelve",
+    "description": "Twelveth Endpoint",
+    "bot": "Bot Three",
+    "created": 1713755234303
+  }
+]
