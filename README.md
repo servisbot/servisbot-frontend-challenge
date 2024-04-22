@@ -20,7 +20,7 @@ Within this repo, you will find a **data** directory. This contains some dummy d
 A Bot definition looks like this
 ```json
 {
-  "id": "04140c19-0c46-43c6-8e78-f459cd3b3370",       // Un-Mutable Required UUID
+  "id": "04140c19-0c46-43c6-8e78-f459cd3b3370",       // Immutable Required UUID
   "name": "Bot One",                                  // Mutable Required String
   "description": "First Bot",                         // Mutable Optional String
   "status": "DISABLED",                               // Mutable Required String Enum ["DISABLED", "ENABLED", "PAUSED"]
