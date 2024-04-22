@@ -15,7 +15,7 @@ Feel free to fork this repo, or create your own repo and complete the task below
 Within this repo, you will find a **data** directory. This contains some dummy data that you can use within your application. Please take some time to familiarize yourself with this data structure, as it may impact your choices and application significantly.
 
 
-### Bot Data
+### Bot Entity Data Model
 
 A Bot definition looks like this
 ```json
@@ -24,7 +24,7 @@ A Bot definition looks like this
   "name": "Bot One",                                  // Mutable Required String
   "description": "First Bot",                         // Mutable Optional String
   "status": "DISABLED",                               // Mutable Required String Enum ["DISABLED", "ENABLED", "PAUSED"]
-  "created": 1713809849892                            // Un-Mutable Required Epoch Timestamp
+  "created": 1713809849892                            // Immutable Required Epoch Timestamp
 }
 ```
 
@@ -33,11 +33,11 @@ A Bot definition looks like this
 An Endpoint definition looks like this
 ```json
 {
-  "id": "6f4fdfd9-da33-4711-9386-579e8101dc43",       // Un-Mutable Required UUID
+  "id": "6f4fdfd9-da33-4711-9386-579e8101dc43",       // Immutable Required UUID
   "name": "Endpoint One",                             // Mutable Required String
   "description": "First Endpoint",                    // Mutable Optional String
   "bot": "Bot One",                                   // Mutable Required String - references a unique bot
-  "created": 1713773401591                            // Un-Mutable Required Epoch Timestamp
+  "created": 1713773401591                            // Immutable Required Epoch Timestamp
 }
 ```
 
@@ -46,11 +46,11 @@ An Endpoint definition looks like this
 A Log definition looks like this
 ```json
 {
-  "id": "a3922ad6-49ed-4cf3-8293-cc4d58a5d4c9",        // Un-Mutable Required UUID
-  "created": "2024-04-22T14:14:14.926Z",               // Un-Mutable Required ISO Timestamp
+  "id": "a3922ad6-49ed-4cf3-8293-cc4d58a5d4c9",        // Immutable Required UUID
+  "created": "2024-04-22T14:14:14.926Z",               // Immutable Required ISO Timestamp
   "message": "Some Message",                           // Mutable Required String
-  "bot": "44700aa2-cba6-43d2-9ad4-8d8a499bd356",       // Un-Mutable Required UUID - references a unique bot
-  "endpoint": "e5d7874c-fd2d-41b8-abc1-2e311964ae8c"   // Un-Mutable Required UUID - references a unique endpoint
+  "bot": "44700aa2-cba6-43d2-9ad4-8d8a499bd356",       // Immutable Required UUID - references a unique bot
+  "endpoint": "e5d7874c-fd2d-41b8-abc1-2e311964ae8c"   // Immutable Required UUID - references a unique endpoint
 }
 ```
 
