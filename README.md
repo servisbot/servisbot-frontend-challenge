@@ -5,7 +5,7 @@ Feel free to fork this repo, or create your own repo and complete the task below
 
 ## Note
 * You are free to use whatever technologies you wish to complete the task
-* You are encouraged to modify the provided data to suit your application needs
+* You are encouraged to handle the provided data sets in a way that is efficient, and that best meets the requirements of application features specified below.
 * You are **not** required to produce a production ready application, this is a chance to showcase your abilities - so do try show what you know!
 * You are **not** required to write any backend apis - you can create an application layer that returns data from the provided (or your own modified) data structures
 * Comments or notes are more than welcome
@@ -41,7 +41,7 @@ An Endpoint definition looks like this
 }
 ```
 
-### Log Data
+### Log Data Model
 
 A Log definition looks like this
 ```json
@@ -54,23 +54,24 @@ A Log definition looks like this
 }
 ```
 
-## Data relationship
+## Data Model Relationships (Cardinality)
 
 The data relationship is as follows
-* Bot -> many -> Endpoint
-* Bot -> many -> Log
-* Endpoint -> many -> Log
-* Endpoint -> one -> Bot
-* Log -> one -> Bot
-* Log -> one -> Endpoint
+* Bot 1:M Endpoint
+* Bot 1:M Log
+* Endpoint 1:M Log
+* Endpoint 1:1 Bot
+* Log 1:1 Bot
+* Log 1:1 Endpoint
 
 
 ## The Challenge!
 
-Create an Application that answers the following questions
-* As a user I would like to be able to view the bots in my account
-* As a user I would like to be able to view the list of endpoints for a specific bot in my account
-* As a user I would like to be able to view the logs for a specific bot in my account
-* As a user I would like to be able to view the logs for a specific endpoint for a specific bot in my account
+Create an application that implements the following features
+* View the list of bots
+* View the list of workers for a bot
+* View the list of logs for a bot
+* View the list of logs for a worker associated with a bot
 
-There are no wireframes or design specifics, you are free to create a UI/UX that makes sense to answer the above questions in an easy to use manner.
+There are no wireframes or design considerations specified.
+You are free to apply a UI/UX that delivers an intuitive application experience for the feature set above.
