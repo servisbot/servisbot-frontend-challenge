@@ -15,7 +15,7 @@ Feel free to fork this repo, or create your own repo and complete the task below
 Within this repo, you will find a **data** directory. This contains some dummy data that you can use within your application. Please take some time to familiarize yourself with this data structure, as it may impact your choices and application significantly.
 
 
-### Bot Entity Data Model
+### Bot Data Model
 
 A Bot definition looks like this
 ```json
@@ -28,14 +28,14 @@ A Bot definition looks like this
 }
 ```
 
-### Endpoint Data
+### Worker Data Model
 
-An Endpoint definition looks like this
+A Worker definition looks like this
 ```json
 {
   "id": "6f4fdfd9-da33-4711-9386-579e8101dc43",       // Immutable Required UUID
-  "name": "Endpoint One",                             // Mutable Required String
-  "description": "First Endpoint",                    // Mutable Optional String
+  "name": "Worker One",                               // Mutable Required String
+  "description": "First Worker",                      // Mutable Optional String
   "bot": "Bot One",                                   // Mutable Required String - references a unique bot
   "created": 1713773401591                            // Immutable Required Epoch Timestamp
 }
@@ -50,19 +50,16 @@ A Log definition looks like this
   "created": "2024-04-22T14:14:14.926Z",               // Immutable Required ISO Timestamp
   "message": "Some Message",                           // Mutable Required String
   "bot": "44700aa2-cba6-43d2-9ad4-8d8a499bd356",       // Immutable Required UUID - references a unique bot
-  "endpoint": "e5d7874c-fd2d-41b8-abc1-2e311964ae8c"   // Immutable Required UUID - references a unique endpoint
+  "worker": "e5d7874c-fd2d-41b8-abc1-2e311964ae8c"     // Immutable Required UUID - references a unique worker
 }
 ```
 
 ## Data Model Relationships (Cardinality)
 
 The data relationship is as follows
-* Bot 1:M Endpoint
+* Bot 1:M Worker
 * Bot 1:M Log
-* Endpoint 1:M Log
-* Endpoint 1:1 Bot
-* Log 1:1 Bot
-* Log 1:1 Endpoint
+* Worker 1:M Log
 
 
 ## The Challenge!

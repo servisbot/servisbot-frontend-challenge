@@ -13,21 +13,21 @@ const botIds = [
   '44700aa2-cba6-43d2-9ad4-8d8a499bd356'
 ];
 
-const endpointNames = [
-  'Endpoint One',
-  'Endpoint Two',
-  'Endpoint Three',
-  'Endpoint Four',
-  'Endpoint Five',
-  'Endpoint Six',
-  'Endpoint Seven',
-  'Endpoint Eight',
-  'Endpoint Nine',
-  'Endpoint Ten',
-  'Endpoint Eleven',
-  'Endpoint Twelve'
+const workerNames = [
+  'Worker One',
+  'Worker Two',
+  'Worker Three',
+  'Worker Four',
+  'Worker Five',
+  'Worker Six',
+  'Worker Seven',
+  'Worker Eight',
+  'Worker Nine',
+  'Worker Ten',
+  'Worker Eleven',
+  'Worker Twelve'
 ];
-const endpointIds = [
+const workerIds = [
   '6f4fdfd9-da33-4711-9386-579e8101dc43',
   '98f2b3cd-53dc-42b3-b327-935113e2b105',
   '9844fd23-415b-4d2f-9fa1-78571036cd96',
@@ -47,7 +47,7 @@ const createBot = () => ({
   created: faker.number.int({ min: moment().startOf('day').unix() * 1000, max: moment().endOf('day').unix() * 1000 }),
 });
 
-const createEndpoint = () => ({
+const createWorker = () => ({
   id: faker.string.uuid(),
   created: faker.number.int({ min: moment().startOf('day').unix() * 1000, max: moment().endOf('day').unix() * 1000 }),
 });
@@ -57,7 +57,7 @@ const createLogs = () => ({
   created: faker.date.between({ from: moment(moment().startOf('day').unix() * 1000, "X").format(), to: moment(moment().endOf('day').unix() * 1000, "X").format() }),
   message: faker.string.alpha({ length: { min: 12, max: 400 } }),
   bot: faker.helpers.arrayElement(botIds),
-  endpoint: faker.helpers.arrayElement(endpointIds)
+  worker: faker.helpers.arrayElement(workerIds)
 });
 
 const writeBots = () => {  
@@ -66,10 +66,10 @@ const writeBots = () => {
   fs.writeFile('bots.json', jsonString, () => console.log('Bots Written'));
 }
 
-const writeEndpoints = () => {
-  const endpoints = faker.helpers.multiple(createEndpoint, { count: 12 });
-  const jsonString = JSON.stringify(endpoints, null, 2);
-  fs.writeFile('endpoints.json', jsonString, () => console.log('Endpoints Written'));
+const writeWorkers = () => {
+  const workers = faker.helpers.multiple(createWorker, { count: 12 });
+  const jsonString = JSON.stringify(workers, null, 2);
+  fs.writeFile('workers.json', jsonString, () => console.log('Workers Written'));
 }
 
 const writeLogs = () => {
