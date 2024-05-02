@@ -1,74 +1,70 @@
-# Welcome!
-Thank you for taking the time to participate in this code challenge!
+# Getting Started with Create React App
 
-Feel free to fork this repo, or create your own repo and complete the task below.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Note
-* You are free to use whatever technologies you wish to complete the task
-* You are encouraged to handle the provided data sets in a way that is efficient, and that best meets the requirements of application features specified below.
-* You are **not** required to produce a production ready application, this is a chance to showcase your abilities - so do try show what you know!
-* You are **not** required to write any backend apis - you can create an application layer that returns data from the provided (or your own modified) data structures
-* Comments or notes are more than welcome
+## Available Scripts
 
-## Introduction
+In the project directory, you can run:
 
-Within this repo, you will find a **data** directory. This contains some dummy data that you can use within your application. Please take some time to familiarize yourself with this data structure, as it may impact your choices and application significantly.
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Bot Data Model
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-A Bot definition looks like this
-```json
-{
-  "id": "04140c19-0c46-43c6-8e78-f459cd3b3370",       // Immutable Required UUID
-  "name": "Bot One",                                  // Mutable Required String
-  "description": "First Bot",                         // Mutable Optional String
-  "status": "DISABLED",                               // Mutable Required String Enum ["DISABLED", "ENABLED", "PAUSED"]
-  "created": 1713809849892                            // Immutable Required Epoch Timestamp
-}
-```
+### `npm test`
 
-### Worker Data Model
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-A Worker definition looks like this
-```json
-{
-  "id": "6f4fdfd9-da33-4711-9386-579e8101dc43",       // Immutable Required UUID
-  "name": "Worker One",                               // Mutable Required String
-  "description": "First Worker",                      // Mutable Optional String
-  "bot": "Bot One",                                   // Mutable Required String - references a unique bot
-  "created": 1713773401591                            // Immutable Required Epoch Timestamp
-}
-```
+### `npm run build`
 
-### Log Data Model
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-A Log definition looks like this
-```json
-{
-  "id": "a3922ad6-49ed-4cf3-8293-cc4d58a5d4c9",        // Immutable Required UUID
-  "created": "2024-04-22T14:14:14.926Z",               // Immutable Required ISO Timestamp
-  "message": "Some Message",                           // Mutable Required String
-  "bot": "44700aa2-cba6-43d2-9ad4-8d8a499bd356",       // Immutable Required UUID - references a unique bot
-  "worker": "e5d7874c-fd2d-41b8-abc1-2e311964ae8c"     // Immutable Required UUID - references a unique worker
-}
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Data Model Relationships (Cardinality)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-The data relationship is as follows
-* Bot 1:M Worker
-* Bot 1:M Log
-* Worker 1:M Log
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## The Challenge!
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Create an application that implements the following features
-* View the list of bots
-* View the list of workers for a bot
-* View the list of logs for a bot
-* View the list of logs for a worker associated with a bot
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-There are no wireframes or design considerations specified.
-You are free to apply a UI/UX that delivers an intuitive application experience for the feature set above.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
