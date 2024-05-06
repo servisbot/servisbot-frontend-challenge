@@ -25,7 +25,16 @@ function App() {
             {<Sidebar /> }
           </>
       ),
-    }
+    },
+      {
+          path: "/ListOfWorkersForABot",
+          element: (
+              <>
+                  <ToastContainer />
+                  {<Sidebar /> }
+              </>
+          ),
+      }
   ]);
 
   return <RouterProvider router={router} />;

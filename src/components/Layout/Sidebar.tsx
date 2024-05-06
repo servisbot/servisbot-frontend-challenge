@@ -1,7 +1,9 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import {
+  UsersIcon,
   HomeIcon,
+  DocumentIcon, TagIcon
 } from "@heroicons/react/24/outline";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -26,7 +28,10 @@ import BotsList from "../BotsList/BotsList";
 const drawerWidth = 240;
 
 const navigation = [
-  { id: 1, name: "Dashboard", href: "/", icon: HomeIcon, current: true },
+  { id: 1, name: "List of Bots", href: "/", icon: HomeIcon, current: true },
+  { id: 2, name: "List of Workers For A Bot", href: "/ListOfWorkersForABot", icon: UsersIcon, current: true },
+  { id: 3, name: "List of Logs For A Bot", href: "/ListOfLogsForABot", icon: DocumentIcon, current: true },
+  { id: 4, name: "List of Logs For A Worker For A Bot", href: "/ListOfLogsForAWorkerForABot", icon: TagIcon, current: true }
 ];
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
@@ -95,7 +100,7 @@ export default function Sidebar() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ background: "#212121" }}>
+      <AppBar position="fixed" open={open} sx={{ background: "grey" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -115,7 +120,7 @@ export default function Sidebar() {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            background: "#212121",
+            background: "grey",
             borderColor: "white",
             color: "white",
           },
@@ -141,14 +146,14 @@ export default function Sidebar() {
                 <ListItemButton>
                   <ListItemIcon>
                     <text.icon
-                      className="h-6 w-6 shrink-0 text-white"
+                      className="h-6 w-6 shrink-0 text-blue-400"
                       aria-hidden="true"
                     />
                   </ListItemIcon>
                   <ListItemText primary={text?.name} />
                 </ListItemButton>
               </ListItem>
-              <Divider sx={{ background: "gray" }} />
+              <Divider sx={{ background: "grey" }} />
             </Link>
           ))}
         </List>

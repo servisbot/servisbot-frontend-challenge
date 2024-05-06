@@ -9,11 +9,11 @@ const BotsList = () => {
     const dispatch = useDispatch<AppDispatch>();
     const botsListData = useSelector ((state: any) => state.botsList.data);
     const columns = [
-        { field: 'id', headerName: 'ID', width: 400 },
-        { field: 'name', headerName: 'Name', width: 150 },
-        { field: 'description', headerName: 'Description', width: 200 },
-        { field: 'status', headerName: 'Status', width: 100 },
-        { field: 'created', headerName: 'Created', width: 200 }
+        { field: 'id', headerName: 'ID', width: 400, flex:2 },
+        { field: 'name', headerName: 'Name', width: 50, flex:1 },
+        { field: 'description', headerName: 'Description', width: 100, flex:1 },
+        { field: 'status', headerName: 'Status', width: 100, flex:1 },
+        { field: 'created', headerName: 'Created', width: 200, flex:1 }
     ]
     useEffect(() => {
         dispatch(getBotsListApiCall());
