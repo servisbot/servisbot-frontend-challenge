@@ -4,6 +4,7 @@ import ILogs from "../interface/ILogs";
 
 interface IWorkerLogsState {
     data: ILogs[],
+    filteredData: ILogs[],
     isLoading: boolean,
     isError: boolean,
 }
@@ -35,6 +36,7 @@ export const getBotsWorkerLogsListApiCall = createAsyncThunk('/getBotsWorkerLogs
 
 const initialState: IWorkerLogsState = {
     data: [],
+    filteredData: [],
     isLoading: false,
     isError: false
 }
@@ -51,10 +53,10 @@ const getBotsWorkerLogListSlice = createSlice({
             //     item.bot.toLowerCase().includes(botId[0].toLowerCase()) &&
             //     item.worker.toLowerCase().includes(workerId[0].toLowerCase())
             // )}
-            console.log(...state.data);
+            //console.log(...state.data);
         return {
             ...state,
-            data: [...state.data].filter((item: ILogs) =>
+            filteredData: [...state.data].filter((item: ILogs) =>
                 item.bot.toLowerCase().includes(botId[0].toLowerCase()) &&
                 item.worker.toLowerCase().includes(workerId[0].toLowerCase())
             )

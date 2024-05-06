@@ -17,7 +17,7 @@ const BotsWorkerLogList = () => {
     });
     const [data, setData] = useState([]);
     const dispatch = useDispatch<AppDispatch>();
-    const botsWorkerLogsListData = useSelector ((state: any) => state.botsWorkerLogList.data);
+    const botsWorkerLogsListData = useSelector ((state: any) => state.botsWorkerLogList.filteredData);
     const columns = [
         { field: 'id', headerName: 'Log Id', width: 350, flex:1 },
         { field: 'created', headerName: 'Created', width: 50, flex:1 },
