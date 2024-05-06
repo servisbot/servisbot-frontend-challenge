@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios";
 import IBots from "../interface/IBots";
-import BotsList from "../components/BotsList/BotsList";
 
 interface IBotsState {
     data: IBots[],

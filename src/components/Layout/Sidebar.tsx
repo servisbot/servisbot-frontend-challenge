@@ -11,7 +11,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -21,9 +20,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button } from "@mui/base";
+import { Link, useLocation } from "react-router-dom";
 import BotsList from "../BotsList/BotsList";
+import BotsWorkersList from "../BotsWorkersList/BotsWorkersList";
 
 const drawerWidth = 240;
 
@@ -85,7 +84,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function Sidebar() {
   const location = useLocation();
-  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -161,6 +159,7 @@ export default function Sidebar() {
       <Main open={open}>
         <DrawerHeader />
         {location.pathname === "/" && <BotsList />}
+        {location.pathname === "/ListOfWorkersForABot" && <BotsWorkersList />}
       </Main>
     </Box>
   );

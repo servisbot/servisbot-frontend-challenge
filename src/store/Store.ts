@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import botsListSlice from "../slice/BotsListSlice"
+import botsWorkersListSlice from "../slice/BotsWorkersListSlice";
 
 const store = configureStore({
     reducer: {
-        botsList : botsListSlice
+        botsList : botsListSlice,
+        botsWorkersList: botsWorkersListSlice
     }
 });
 
