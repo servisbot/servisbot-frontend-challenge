@@ -3,14 +3,21 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store/Store";
 import {DataGrid} from "@mui/x-data-grid";
 import {Box, TextField} from "@mui/material";
-import {getBotsLogsListApiCall} from "../../slice/BotsLogListSlice";
-import {getBotsWorkerLogsListApiCall} from "../../slice/BotsWorkerLogListSlice";
+import {getBotsWorkerLogsList, getBotsWorkerLogsListApiCall} from "../../slice/BotsWorkerLogListSlice";
 
-const BotsLogList = () => {
-    const [searchData, setSearchData] = useState("");
+interface SearchData {
+    botId: string,
+    workerId: string
+}
+
+const BotsWorkerLogList = () => {
+    const [searchData, setSearchData] = useState<SearchData>({
+        botId: "",
+        workerId: ""
+    });
     const [data, setData] = useState([]);
     const dispatch = useDispatch<AppDispatch>();
-    const botsLogsListData = useSelector ((state: any) => state.botsLogList.data);
+    const botsWorkerLogsListData = useSelector ((state: any) => state.botsWorkerLogList.data);
     const columns = [
         { field: 'id', headerName: 'Log Id', width: 350, flex:1 },
         { field: 'created', headerName: 'Created', width: 50, flex:1 },
@@ -19,25 +26,29 @@ const BotsLogList = () => {
         { field: 'worker', headerName: 'Worker Id', width: 200, flex:1 }
     ]
 
+    useEffect(() => {
+        dispatch(getBotsWorkerLogsListApiCall(searchData));
+        setData([])
+    }, [dispatch]);
+
     const handleChange = (e: any) => {
         console.log(e.target.value);
-        setSearchData(e.target.value);
+        setSearchData({...searchData, [e.target.name]:[e.target.value]});
     };
 
     const handelSubmit = useCallback((e: any) => {
         e.preventDefault();
         console.log(searchData);
-        dispatch(getBotsLogsListApiCall(searchData));
-        console.log(botsLogsListData);
-        setData(botsLogsListData);
-        //setSearchData("");
-    }, [searchData, botsLogsListData, dispatch]);
+        dispatch(getBotsWorkerLogsList(searchData));
+        console.log(botsWorkerLogsListData);
+        setData(botsWorkerLogsListData);
+    }, [searchData, botsWorkerLogsListData, dispatch]);
 
     return (
         <div>
             <div>
                 <p className="text-[30px]  font-[700] py-4 text-center mt-[100px]">
-                    Please Enter A Bot Id To Get Logs List
+                    Please Enter A Bot Id and Worker Id To Get Logs List
                 </p>
 
                 <div
@@ -46,11 +57,20 @@ const BotsLogList = () => {
                 >
                     <TextField
                         id="outlined-basic"
-                        name="name"
-                        value={searchData}
+                        name="botId"
+                        value={searchData.botId}
                         onChange={handleChange}
                         sx={{width: "300px"}}
                         label="Bot Id"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="outlined-basic"
+                        name="workerId"
+                        value={searchData.workerId}
+                        onChange={handleChange}
+                        sx={{width: "300px"}}
+                        label="Worker Id"
                         variant="outlined"
                     />
                     <div>
@@ -82,4 +102,4 @@ const BotsLogList = () => {
     );
 };
 
-export default BotsLogList;
+export default BotsWorkerLogList;

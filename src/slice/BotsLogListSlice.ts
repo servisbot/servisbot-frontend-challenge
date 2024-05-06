@@ -8,12 +8,16 @@ interface ILogsState {
     isError: boolean,
 }
 
-export const getBotsLogsListApiCall = createAsyncThunk('/getBotsWorkersList', async (botId: string) => {
+export const getBotsLogsListApiCall = createAsyncThunk('/getBotsLogsList', async (botId: string) => {
     const response =await axios.get('./api/logs.json', {
         params: {
             botId: botId
         }
     }).then((res) => res.data);
+    console.log(response);
+    console.log(response.filter((item: ILogs) =>
+        item.bot.toLowerCase().includes(botId.toLowerCase())
+    ));
     return response.filter((item: ILogs) =>
         item.bot.toLowerCase().includes(botId.toLowerCase())
     );
@@ -31,6 +35,7 @@ const getBotsLogListSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getBotsLogsListApiCall.fulfilled, (state, action) => {
+            console.log(action);
             state.data = action.payload;
         })
         builder.addCase(getBotsLogsListApiCall.pending, (state, action) => {

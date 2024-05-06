@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useState} from "react";
 import {getBotsWorkersListApiCall} from "../../slice/BotsWorkersListSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store/Store";
@@ -9,7 +9,7 @@ const BotsWorkersList = () => {
     const [searchData, setSearchData] = useState("");
     const [data, setData] = useState([]);
     const dispatch = useDispatch<AppDispatch>();
-    const botsWorkersListData = useSelector ((state: any) => state.botsWorkersList.data);
+    const botsWorkersListData = useSelector ((state: any) => state.botsWorkerLogList.data);
     const columns = [
         { field: 'id', headerName: 'ID', width: 400, flex:2 },
         { field: 'name', headerName: 'Name', width: 50, flex:1 },
@@ -29,7 +29,7 @@ const BotsWorkersList = () => {
         dispatch(getBotsWorkersListApiCall(searchData));
         setData(botsWorkersListData);
         //setSearchData("");
-    },[searchData, botsWorkersListData]);
+    },[searchData, botsWorkersListData, dispatch]);
 
     return (
         <div>

@@ -43,6 +43,15 @@ function App() {
                   {<Sidebar /> }
               </>
           ),
+      },
+      {
+          path: "/ListOfLogsForAWorkerForABot",
+          element: (
+              <>
+                  <ToastContainer />
+                  {<Sidebar /> }
+              </>
+          ),
       }
   ]);
 

@@ -24,6 +24,7 @@ import { Link, useLocation } from "react-router-dom";
 import BotsList from "../BotsList/BotsList";
 import BotsWorkersList from "../BotsWorkersList/BotsWorkersList";
 import BotsLogList from "../BotsLogList/BotsLogList";
+import BotsWorkerLogList from "../BotsWorkerLog/BotsWorkerLogList";
 
 const drawerWidth = 240;
 
@@ -162,6 +163,7 @@ export default function Sidebar() {
         {location.pathname === "/" && <BotsList />}
         {location.pathname === "/ListOfWorkersForABot" && <BotsWorkersList />}
         {location.pathname === "/ListOfLogsForABot" && <BotsLogList />}
+        {location.pathname === "/ListOfLogsForAWorkerForABot" && <BotsWorkerLogList/>}
       </Main>
     </Box>
   );
