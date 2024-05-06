@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {getBotsWorkersListApiCall} from "../../slice/BotsWorkersListSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store/Store";
@@ -18,22 +18,18 @@ const BotsWorkersList = () => {
         { field: 'created', headerName: 'Created', width: 200, flex:1 }
     ]
 
-    useEffect(() => {
-        console.log(botsWorkersListData);
-        setData(botsWorkersListData);
-    }, [botsWorkersListData]);
-
     const handleChange = (e: any) => {
         console.log(e.target.value);
         setSearchData(e.target.value);
     };
 
-    const handelSubmit = (e: any) => {
+    const handelSubmit = useCallback((e: any) => {
         e.preventDefault();
         console.log(searchData);
         dispatch(getBotsWorkersListApiCall(searchData));
-        setSearchData("");
-    };
+        setData(botsWorkersListData);
+        //setSearchData("");
+    },[searchData, botsWorkersListData]);
 
     return (
         <div>
@@ -71,7 +67,7 @@ const BotsWorkersList = () => {
                 </div>
             </div>
         </div>
-            {data.length!=0 && (<div><DataGrid
+            {data.length!==0 && (<div className="mt-4 py-4"><DataGrid
                 rows={data}
                 columns={columns}
                 autoHeight={true}

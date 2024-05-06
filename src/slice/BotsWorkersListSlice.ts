@@ -14,16 +14,6 @@ export const getBotsWorkersListApiCall = createAsyncThunk('/getBotsWorkersList',
             botName: botName
         }
     }).then((res) => res.data);
-    console.log(response);
-    const filteredResponse = () => {
-        return response.filter((item: IWorkers) =>
-            item.bot.toLowerCase().includes(botName.toLowerCase())
-        ) as IWorkers;
-    };
-    console.log(botName);
-    console.log(response.filter((item: IWorkers) =>
-        item.bot.toLowerCase().includes(botName.toLowerCase())
-    ));
     return response.filter((item: IWorkers) =>
         item.bot.toLowerCase().includes(botName.toLowerCase())
     );

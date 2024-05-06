@@ -34,6 +34,15 @@ function App() {
                   {<Sidebar /> }
               </>
           ),
+      },
+      {
+          path: "/ListOfLogsForABot",
+          element: (
+              <>
+                  <ToastContainer />
+                  {<Sidebar /> }
+              </>
+          ),
       }
   ]);
 

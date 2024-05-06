@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getBotsListApiCall} from "../../slice/BotsListSlice"
 import {AppDispatch} from "../../store/Store";
@@ -25,15 +25,22 @@ const BotsList = () => {
     }, [botsListData]);
 
     return (
-        <DataGrid
-            rows={data}
-            columns={columns}
-            autoHeight={true}
-            initialState={{
-                pagination: { paginationModel: { pageSize: 2 } },
+        <div>
+            <div>
+                <p className="text-[30px]  font-[700] py-4 text-center mt-[100px]">
+                    List Of Bots
+                </p>
+            </div>
+            <DataGrid
+                rows={data}
+                columns={columns}
+                autoHeight={true}
+                initialState={{
+                    pagination: { paginationModel: { pageSize: 5 } },
             }}
-            pageSizeOptions={[2,5,10]}
+            pageSizeOptions={[5,10]}
         />
+        </div>
     );
 }
 export default BotsList;

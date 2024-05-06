@@ -23,6 +23,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link, useLocation } from "react-router-dom";
 import BotsList from "../BotsList/BotsList";
 import BotsWorkersList from "../BotsWorkersList/BotsWorkersList";
+import BotsLogList from "../BotsLogList/BotsLogList";
 
 const drawerWidth = 240;
 
@@ -160,6 +161,7 @@ export default function Sidebar() {
         <DrawerHeader />
         {location.pathname === "/" && <BotsList />}
         {location.pathname === "/ListOfWorkersForABot" && <BotsWorkersList />}
+        {location.pathname === "/ListOfLogsForABot" && <BotsLogList />}
       </Main>
     </Box>
   );
