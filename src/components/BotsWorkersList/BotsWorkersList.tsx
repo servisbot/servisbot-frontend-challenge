@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {getBotsWorkersListApiCall} from "../../slice/BotsWorkersListSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store/Store";
@@ -9,7 +9,7 @@ const BotsWorkersList = () => {
     const [searchData, setSearchData] = useState("");
     const [data, setData] = useState([]);
     const dispatch = useDispatch<AppDispatch>();
-    const botsWorkersListData = useSelector ((state: any) => state.botsWorkerLogList.data);
+    const botsWorkerListData = useSelector ((state: any) => state.botsWorkers.data);
     const columns = [
         { field: 'id', headerName: 'ID', width: 400, flex:2 },
         { field: 'name', headerName: 'Name', width: 50, flex:1 },
@@ -22,14 +22,13 @@ const BotsWorkersList = () => {
         console.log(e.target.value);
         setSearchData(e.target.value);
     };
+    useEffect(() => {
+        setData(botsWorkerListData)
+    }, [botsWorkerListData]);
 
-    const handelSubmit = useCallback((e: any) => {
-        e.preventDefault();
-        console.log(searchData);
+    const handelSubmit =  useCallback(() => {
         dispatch(getBotsWorkersListApiCall(searchData));
-        setData(botsWorkersListData);
-        //setSearchData("");
-    },[searchData, botsWorkersListData, dispatch]);
+    }, [searchData, dispatch])
 
     return (
         <div>
@@ -67,7 +66,8 @@ const BotsWorkersList = () => {
                 </div>
             </div>
         </div>
-            {data.length!==0 && (<div className="mt-4 py-4"><DataGrid
+            {/*{console.log(data)}*/}
+            {data.length>1 && (<div className="mt-4 py-4"><DataGrid
                 rows={data}
                 columns={columns}
                 autoHeight={true}

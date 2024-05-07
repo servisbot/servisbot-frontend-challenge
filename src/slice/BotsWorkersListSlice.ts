@@ -2,44 +2,55 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios";
 import IWorkers from "../interface/IWorkers";
 
-interface IWorkersState {
-    data: IWorkers[],
+interface IBotsWorkersListState {
+    data: IWorkers [],
     isLoading: boolean,
     isError: boolean,
 }
+export const getBotsWorkersListApiCall = createAsyncThunk('botsList/getBotsWorkersList', async (botName: string) => {
+    try {
+        const response = await axios.get(`/api/workers.json`,{
+            params: {
+                botName: botName
+            }
+        });
+        return response.data.filter((item: any) =>
+            item.bot.toLowerCase().includes(botName.toLowerCase())
+        );
 
-export const getBotsWorkersListApiCall = createAsyncThunk('/getBotsWorkersList', async (botName: string) => {
-    const response =await axios.get('./api/workers.json', {
-        params: {
-            botName: botName
-        }
-    }).then((res) => res.data);
-    return response.filter((item: IWorkers) =>
-        item.bot.toLowerCase().includes(botName.toLowerCase())
-    );
-})
+    } catch (error) {
+        throw new Error('Failed to fetch workers list');
+    }
+});
 
-const initialState: IWorkersState = {
+const initialState:IBotsWorkersListState = {
     data: [],
     isLoading: false,
-    isError: false
-}
+    isError: false,
+};
 
-const getBotsListSlice = createSlice({
-    name: 'botsList',
+const getBotsWorkerListSlice = createSlice({
+    name: 'botsWorkers',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getBotsWorkersListApiCall.fulfilled, (state, action) => {
-            state.data = action.payload;
-        })
-        builder.addCase(getBotsWorkersListApiCall.pending, (state, action) => {
-            state.isLoading = true;
-        })
-        builder.addCase(getBotsWorkersListApiCall.rejected, (state, action) => {
-            state.isError = true;
-        })
+        builder
+            .addCase(getBotsWorkersListApiCall.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getBotsWorkersListApiCall.fulfilled, (state, action) => {
+                console.log("inside fulfilled");
+                state.isLoading = false;
+                state.isError = false;
+                console.log(action.payload);
+                state.data = action.payload
+            })
+            .addCase(getBotsWorkersListApiCall.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+            })
+
     }
-})
-export default getBotsListSlice.reducer;
+});
+export default getBotsWorkerListSlice.reducer;
 

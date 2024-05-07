@@ -141,7 +141,7 @@ export default function Sidebar() {
         <Divider />
         <List>
           {navigation?.map((text: any, index) => (
-            <Link to={text.href}>
+            <Link to={text.href} key={index}>
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>

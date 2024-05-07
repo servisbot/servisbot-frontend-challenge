@@ -2,19 +2,24 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios";
 import IBots from "../interface/IBots";
 
-interface IBotsState {
+interface IBotsListState {
     data: IBots[],
     isLoading: boolean,
     isError: boolean,
 }
 
 export const getBotsListApiCall = createAsyncThunk('/getBotsList', async () => {
-    const response =await axios.get('./api/bots.json').then((res) => res.data);
-    console.log(response);
-    return response;
+    try{
+        const response =await axios.get('./api/bots.json');
+        console.log(response);
+        return response.data;
+    }catch (error) {
+        throw new Error('Failed to fetch bots list');
+    }
+
 })
 
-const initialState: IBotsState = {
+const initialState: IBotsListState = {
     data: [],
     isLoading: false,
     isError: false

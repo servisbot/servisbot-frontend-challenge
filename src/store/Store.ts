@@ -1,15 +1,15 @@
 import {configureStore} from "@reduxjs/toolkit";
-import botsListSlice from "../slice/BotsListSlice"
-import botsWorkersListSlice from "../slice/BotsWorkersListSlice";
-import botsLogListSlice from "../slice/BotsLogListSlice";
-import botsWorkerLogListSlice from "../slice/BotsWorkerLogListSlice";
+import botsListReducer from "../slice/BotsListSlice"
+import botsWorkerListReducer from "../slice/BotsWorkersListSlice";
+import botsLogListReducer from "../slice/BotsLogListSlice";
+import botsWorkerLogListReducer from "../slice/BotsWorkerLogListSlice";
 
 const store = configureStore({
     reducer: {
-        botsList : botsListSlice,
-        botsWorkersList: botsWorkersListSlice,
-        botsLogList: botsLogListSlice,
-        botsWorkerLogList: botsWorkerLogListSlice
+        botsList : botsListReducer,
+        botsWorkers: botsWorkerListReducer,
+        botsLogs: botsLogListReducer,
+        botsWorkerLogs: botsWorkerLogListReducer
     }
 });
 

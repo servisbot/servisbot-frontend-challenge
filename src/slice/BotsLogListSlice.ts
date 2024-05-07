@@ -2,48 +2,54 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios";
 import ILogs from "../interface/ILogs";
 
-interface ILogsState {
+interface IBotsLogListState {
     data: ILogs[],
     isLoading: boolean,
-    isError: boolean,
+    isError: boolean
 }
 
-export const getBotsLogsListApiCall = createAsyncThunk('/getBotsLogsList', async (botId: string) => {
-    const response =await axios.get('./api/logs.json', {
-        params: {
-            botId: botId
-        }
-    }).then((res) => res.data);
-    console.log(response);
-    console.log(response.filter((item: ILogs) =>
-        item.bot.toLowerCase().includes(botId.toLowerCase())
-    ));
-    return response.filter((item: ILogs) =>
-        item.bot.toLowerCase().includes(botId.toLowerCase())
-    );
-})
+export const getBotsLogListApiCall = createAsyncThunk('botsList/getBotsLogsList', async (botId: string) => {
+    try {
+        const response = await axios.get(`/api/logs.json`,{
+            params: {
+                botId: botId.toString()
+            }
+        });
+        return response.data.filter((item: any) =>
+            item.bot.toLowerCase().includes(botId.toLowerCase())
+        );
 
-const initialState: ILogsState = {
+    } catch (error) {
+        throw new Error('Failed to fetch logs list for bot');
+    }
+});
+
+const initialState:IBotsLogListState = {
     data: [],
     isLoading: false,
-    isError: false
-}
+    isError: false,
+};
 
 const getBotsLogListSlice = createSlice({
-    name: 'botsLogList',
+    name: 'botsLogs',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getBotsLogsListApiCall.fulfilled, (state, action) => {
-            console.log(action);
-            state.data = action.payload;
-        })
-        builder.addCase(getBotsLogsListApiCall.pending, (state, action) => {
-            state.isLoading = true;
-        })
-        builder.addCase(getBotsLogsListApiCall.rejected, (state, action) => {
-            state.isError = true;
-        })
+        builder
+            .addCase(getBotsLogListApiCall.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getBotsLogListApiCall.fulfilled, (state, action) => {
+                console.log("inside fulfilled");
+                state.isLoading = false;
+                state.isError = false;
+                console.log(action.payload);
+                state.data = action.payload
+            })
+            .addCase(getBotsLogListApiCall.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+            })
     }
 })
 export default getBotsLogListSlice.reducer;

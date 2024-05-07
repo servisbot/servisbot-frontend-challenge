@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store/Store";
 import {DataGrid} from "@mui/x-data-grid";
 import {Box, TextField} from "@mui/material";
-import {getBotsWorkerLogsList, getBotsWorkerLogsListApiCall} from "../../slice/BotsWorkerLogListSlice";
+import {getBotsWorkerLogListApiCall} from "../../slice/BotsWorkerLogListSlice";
 
 interface SearchData {
     botId: string,
@@ -17,7 +17,7 @@ const BotsWorkerLogList = () => {
     });
     const [data, setData] = useState([]);
     const dispatch = useDispatch<AppDispatch>();
-    const botsWorkerLogsListData = useSelector ((state: any) => state.botsWorkerLogList.filteredData);
+    const botsWorkerLogListData = useSelector ((state: any) => state.botsWorkerLogs.data);
     const columns = [
         { field: 'id', headerName: 'Log Id', width: 350, flex:1 },
         { field: 'created', headerName: 'Created', width: 50, flex:1 },
@@ -25,24 +25,17 @@ const BotsWorkerLogList = () => {
         { field: 'bot', headerName: 'Bot Id', width: 100, flex:1 },
         { field: 'worker', headerName: 'Worker Id', width: 200, flex:1 }
     ]
-
-    useEffect(() => {
-        dispatch(getBotsWorkerLogsListApiCall(searchData));
-        setData([])
-    }, [dispatch]);
-
     const handleChange = (e: any) => {
         console.log(e.target.value);
         setSearchData({...searchData, [e.target.name]:[e.target.value]});
     };
+    useEffect(() => {
+        setData(botsWorkerLogListData)
+    }, [botsWorkerLogListData]);
 
-    const handelSubmit = useCallback((e: any) => {
-        e.preventDefault();
-        console.log(searchData);
-        dispatch(getBotsWorkerLogsList(searchData));
-        console.log(botsWorkerLogsListData);
-        setData(botsWorkerLogsListData);
-    }, [searchData, botsWorkerLogsListData, dispatch]);
+    const handelSubmit =  useCallback(() => {
+        dispatch(getBotsWorkerLogListApiCall(searchData));
+    }, [searchData, dispatch])
 
     return (
         <div>
