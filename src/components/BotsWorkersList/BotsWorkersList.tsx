@@ -24,7 +24,11 @@ const BotsWorkersList = () => {
     };
     useEffect(() => {
         setData(botsWorkerListData)
-    }, [botsWorkerListData]);
+    }, [botsWorkerListData,]);
+
+    useEffect(() => {
+        dispatch(getBotsWorkersListApiCall(searchData));
+    }, [])
 
     const handelSubmit =  useCallback(() => {
         dispatch(getBotsWorkersListApiCall(searchData));
@@ -66,8 +70,7 @@ const BotsWorkersList = () => {
                 </div>
             </div>
         </div>
-            {/*{console.log(data)}*/}
-            {data.length>1 && (<div className="mt-4 py-4"><DataGrid
+            {data && data?.length!==0 && (<div className="mt-4 py-4"><DataGrid
                 rows={data}
                 columns={columns}
                 autoHeight={true}

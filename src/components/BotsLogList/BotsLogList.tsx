@@ -26,6 +26,10 @@ const BotsLogList = () => {
         setData(botsLogsListData)
     }, [botsLogsListData]);
 
+    useEffect(() => {
+        dispatch(getBotsLogListApiCall(searchData));
+    }, [])
+
     const handelSubmit =  useCallback(() => {
         dispatch(getBotsLogListApiCall(searchData));
     }, [searchData, dispatch])

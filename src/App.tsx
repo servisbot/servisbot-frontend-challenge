@@ -2,8 +2,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "./components/Layout/Sidebar";
 
 function App() {
@@ -12,7 +10,6 @@ function App() {
       path: "/",
       element: (
           <>
-            <ToastContainer />
             {<Sidebar />}
           </>
       ),
@@ -21,7 +18,6 @@ function App() {
       path: "/botsList",
       element: (
           <>
-            <ToastContainer />
             {<Sidebar /> }
           </>
       ),
@@ -30,7 +26,6 @@ function App() {
           path: "/ListOfWorkersForABot",
           element: (
               <>
-                  <ToastContainer />
                   {<Sidebar /> }
               </>
           ),
@@ -39,7 +34,6 @@ function App() {
           path: "/ListOfLogsForABot",
           element: (
               <>
-                  <ToastContainer />
                   {<Sidebar /> }
               </>
           ),
@@ -48,7 +42,6 @@ function App() {
           path: "/ListOfLogsForAWorkerForABot",
           element: (
               <>
-                  <ToastContainer />
                   {<Sidebar /> }
               </>
           ),

@@ -9,15 +9,21 @@ interface IBotsWorkersListState {
 }
 export const getBotsWorkersListApiCall = createAsyncThunk('botsList/getBotsWorkersList', async (botName: string) => {
     try {
-        const response = await axios.get(`/api/workers.json`,{
-            params: {
-                botName: botName
-            }
-        });
-        return response.data.filter((item: any) =>
-            item.bot.toLowerCase().includes(botName.toLowerCase())
-        );
-
+        console.log("botName",botName);
+        console.log(botName.length);
+        if(botName.toString().length!==0) {
+            console.log("inside if botName check");
+            const response = await axios.get(`/api/workers.json`,{
+                params: {
+                    botName: botName
+                }
+            })
+            return response.data.filter((item: any) =>
+                item.bot.toLowerCase().includes(botName.toLowerCase())
+            );
+        }else {
+            return [];
+        }
     } catch (error) {
         throw new Error('Failed to fetch workers list');
     }

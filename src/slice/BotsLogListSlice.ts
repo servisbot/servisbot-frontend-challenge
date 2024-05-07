@@ -10,15 +10,18 @@ interface IBotsLogListState {
 
 export const getBotsLogListApiCall = createAsyncThunk('botsList/getBotsLogsList', async (botId: string) => {
     try {
-        const response = await axios.get(`/api/logs.json`,{
-            params: {
-                botId: botId.toString()
-            }
-        });
-        return response.data.filter((item: any) =>
-            item.bot.toLowerCase().includes(botId.toLowerCase())
-        );
-
+        if(botId.toString().length!==0) {
+            const response = await axios.get(`/api/logs.json`,{
+                params: {
+                    botId: botId.toString()
+                }
+            });
+            return response.data.filter((item: any) =>
+                item.bot.toLowerCase().includes(botId.toLowerCase())
+            );
+        }else {
+            return [];
+        }
     } catch (error) {
         throw new Error('Failed to fetch logs list for bot');
     }
