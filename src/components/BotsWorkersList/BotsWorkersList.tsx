@@ -2,20 +2,21 @@ import React, {useCallback, useEffect, useState} from "react";
 import {getBotsWorkersListApiCall} from "../../slice/BotsWorkersListSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store/Store";
-import {DataGrid} from "@mui/x-data-grid";
 import {Box, TextField} from "@mui/material";
+import DataTable from "../DataTable/DataTable";
+import IDataTableColumn from "../DataTable/IDatatableColumn";
 
 const BotsWorkersList = () => {
     const [searchData, setSearchData] = useState("");
     const [data, setData] = useState([]);
     const dispatch = useDispatch<AppDispatch>();
     const botsWorkerListData = useSelector ((state: any) => state.botsWorkers.data);
-    const columns = [
-        { field: 'id', headerName: 'ID', width: 400, flex:2 },
-        { field: 'name', headerName: 'Name', width: 50, flex:1 },
-        { field: 'description', headerName: 'Description', width: 100, flex:1 },
-        { field: 'bot', headerName: 'Bot Name', width: 100, flex:1 },
-        { field: 'created', headerName: 'Created', width: 200, flex:1 }
+    const columns: IDataTableColumn[] = [
+        { id: 'id', label: 'ID', width: 200 },
+        { id: 'name', label: 'Name', width: 100 },
+        { id: 'description', label: 'Description', width: 100 },
+        { id: 'bot', label: 'Bot Name', width: 100},
+        { id: 'created', label: 'Created', width: 100, type:"epoch"}
     ]
 
     const handleChange = (e: any) => {
@@ -70,14 +71,9 @@ const BotsWorkersList = () => {
                 </div>
             </div>
         </div>
-            {data && data?.length!==0 && (<div className="mt-4 py-4"><DataGrid
+            {data && data?.length!==0 && (<div className="mt-4 py-4"><DataTable
                 rows={data}
                 columns={columns}
-                autoHeight={true}
-                initialState={{
-                    pagination: {paginationModel: {pageSize: 3}},
-                }}
-                pageSizeOptions={[3, 5, 10]}
             /></div>)}
         </div>
     );

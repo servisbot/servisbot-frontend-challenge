@@ -1,0 +1,7 @@
+tr {
+  height: 10px;
+}
+
+tr td {
+  height: auto !important;
+}

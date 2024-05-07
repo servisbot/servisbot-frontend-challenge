@@ -1,9 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../../store/Store";
-import {DataGrid} from "@mui/x-data-grid";
 import {Box, TextField} from "@mui/material";
 import {getBotsWorkerLogListApiCall} from "../../slice/BotsWorkerLogListSlice";
+import DataTable from "../DataTable/DataTable";
+import IDataTableColumn from "../DataTable/IDatatableColumn";
 
 interface SearchData {
     botId: string,
@@ -18,12 +19,12 @@ const BotsWorkerLogList = () => {
     const [data, setData] = useState([]);
     const dispatch = useDispatch<AppDispatch>();
     const botsWorkerLogListData = useSelector ((state: any) => state.botsWorkerLogs.data);
-    const columns = [
-        { field: 'id', headerName: 'Log Id', width: 350, flex:1 },
-        { field: 'created', headerName: 'Created', width: 50, flex:1 },
-        { field: 'message', headerName: 'Message', width: 100, flex:1 },
-        { field: 'bot', headerName: 'Bot Id', width: 100, flex:1 },
-        { field: 'worker', headerName: 'Worker Id', width: 200, flex:1 }
+    const columns: IDataTableColumn[] = [
+        { id: 'id', label: 'Log Id', width: 100 },
+        { id: 'created', label: 'Created', width: 50},
+        { id: 'message', label: 'Message', width:100},
+        { id: 'bot', label: 'Bot Id', width: 150 },
+        { id: 'worker', label: 'Worker Id', width: 200 }
     ]
     const handleChange = (e: any) => {
         console.log(e.target.value);
@@ -86,14 +87,9 @@ const BotsWorkerLogList = () => {
                     </div>
                 </div>
             </div>
-            {data.length!==0 && (<div className="mt-4 py-4"><DataGrid
+            {data.length!==0 && (<div className="mt-4 py-4"><DataTable
                 rows={data}
                 columns={columns}
-                autoHeight={true}
-                initialState={{
-                    pagination: {paginationModel: {pageSize: 25}},
-                }}
-                pageSizeOptions={[25, 50, 100]}
             /></div>)}
         </div>
     );
